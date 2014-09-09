@@ -42,7 +42,7 @@ namespace scy_test
 	*	print info
 	***************************/
 	template<typename T>
-	void Print(T &t)
+	inline void Print(T &t)
 	{
 #ifndef NOTEST
 		std::cout<< t <<std::endl;
@@ -50,7 +50,7 @@ namespace scy_test
 	}
 
 	template<typename T>
-	void Print(T t[], size_t len)
+	inline void Print(T t[], size_t len)
 	{
 #ifndef NOTEST
 		for(size_t i = 0; i < len; ++i)
@@ -59,7 +59,7 @@ namespace scy_test
 #endif
 	}
 	template<typename T>
-	void Print(std::vector<T> iv)
+	inline void Print(std::vector<T> iv)
 	{
 		for(auto i = iv.begin(); i != iv.end(); ++i)
 			std::cout<<*i<<" ";
@@ -84,13 +84,13 @@ namespace scy_test
 		{
 			gettimeofday(&tv,NULL);
 			starttime = tv.tv_sec * 1000 + tv.tv_usec/1000;
+			std::cout<<"--------------------------"<<std::endl;
+			std::cout<<"- \" "<<info<<" \""<<std::endl;
 		}
 		~timer()
 		{
 			gettimeofday(&tv,NULL);
 			endtime = tv.tv_sec * 1000 + tv.tv_usec/1000;
-			std::cout<<"--------------------------"<<std::endl;
-			std::cout<<"- \" "<<info<<" \""<<std::endl;
 			std::cout<<"- running time : "<<endtime-starttime<<" ms "<<std::endl;
 			std::cout<<"--------------------------"<<std::endl;
 		}
@@ -119,7 +119,7 @@ namespace scy_test
 			max_value(mval)
 		{
 //			t = new T[size];
-			srand((unsigned)NULL);
+			srand((unsigned)time(NULL));
 			createDataRandomly();
 		}
 		RandomArray():
@@ -130,7 +130,7 @@ namespace scy_test
 			max_value(INT_MAX)
 		{
 //			t = new T[1];
-			srand((unsigned int)NULL);
+			srand((unsigned int)time(NULL));
 			createDataRandomly();
 		}
 		~RandomArray() { }
