@@ -7,10 +7,27 @@ using namespace scy_test;
 
 int main(int argc, const char *argv[])
 {
-	RandomArray<int> ranarray(1000);
-	vector<int> iv = ranarray.getVector();
-	sort(iv.begin(),iv.end());
-//	Print(iv);
-	cout<<IsSorted(iv)<<endl;
+	const int NUM = 100;
+	vector<RandomArray<double> > randvec(NUM);
+
+	{
+		timer t("std::sort");
+		for(int i = 0; i < NUM; ++i)
+		{
+			vector<double> iv = randvec[i].getUnsortedArray();
+			sort(iv.begin(),iv.end());
+			IsSorted(iv);
+		}
+	}
+
+	{
+		timer t("std::stable_sort");
+		for(int i = 0; i < NUM; ++i)
+		{
+			vector<double> iv = randvec[i].getUnsortedArray();
+			stable_sort(iv.begin(),iv.end());
+			IsSorted(iv);
+		}
+	}
 	return 0;
 }
