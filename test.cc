@@ -1,4 +1,5 @@
 #include"scy_test.h"
+#include"mergesort.h"
 #include"Insertsort.h"
 #include<iostream>
 #include<algorithm>
@@ -11,6 +12,22 @@ int main(int argc, const char *argv[])
 	const int NUM = 10;
 	vector<RandomArray<int> > randvec(NUM);
 
+	{
+		timer t("mergesort");
+		for(int i = 0; i < NUM; ++i)
+		{
+			vector<int> iv = randvec[i].getUnsortedArray();
+			mergesort(iv, 0, iv.size()-1);
+			IsSorted(iv);
+		}
+		/*
+		RandomArray<int> arr(40,1000);
+		auto iv = arr.getUnsortedArray();
+		mergesort(iv, 0, iv.size()-1);
+		IsSorted(iv);
+		*/
+	}	
+	
 	{
 		timer t("std::sort");
 		for(int i = 0; i < NUM; ++i)

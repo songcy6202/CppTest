@@ -2,7 +2,7 @@
  * filename	:  scy_test.h
  * author	:  songcy
  * email	:  920828276@qq.com
- * last modified :  2014-09-08 22:14
+ * last modified :  2014-09-11 09:36
  * description	:  
 ************************************************/
 #ifndef _SCY_TEST_H_
@@ -41,6 +41,12 @@ namespace scy_test
 	/***************************
 	*	print info
 	***************************/
+	inline void Print(const char * str)
+	{
+#ifndef NOTEST
+		std::cout<<str<<std::endl;
+#endif
+	}
 	template<typename T>
 	inline void Print(T &t)
 	{
@@ -61,9 +67,11 @@ namespace scy_test
 	template<typename T>
 	inline void Print(std::vector<T> iv)
 	{
+#ifndef NOTEST
 		for(auto i = iv.begin(); i != iv.end(); ++i)
 			std::cout<<*i<<" ";
 		std::cout<<std::endl;
+#endif
 	}
 
 	/***************************
