@@ -1,5 +1,5 @@
 ##CppTest
-* To debug cpp and log or print info
+* To debug cpp ( log or print info )
 
 * Compare functions (running time ...)
 
