@@ -28,7 +28,7 @@ namespace scy_test
 		{
 			if(*i < *(i-1))
 			{
-#ifndef TEST
+#ifndef NOTEST
 				std::cout<< *i <<" < " <<*(i-1)<<std::endl;
 				std::cout<<" unsorted ! "<<std::endl;
 #endif
